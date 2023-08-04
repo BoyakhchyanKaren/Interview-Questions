@@ -1,0 +1,60 @@
+1. What is the purpose of the alt attribute in an <img> tag?
+
+The alt attribute in an <img> tag is used to provide alternative text for the image.
+It is displayed when the image cannot be loaded or for accessibility purposes, allowing 
+screen readers to describe the image to visually impaired users.
+
+
+2. Explain the difference between <div> and <span> tags in HTML.
+
+The <div> tag is a block-level element that is used to create divisions or sections in HTML, 
+typically used for grouping and styling larger sections of content. The <span> tag, 
+on the other hand, is an inline-level element used for grouping and applying styles to 
+smaller portions of text or elements within a larger block-level element.
+
+3. What are semantic elements in HTML? Provide some examples.
+
+Semantic elements in HTML are tags that convey meaning and define the structure of the content.
+They provide semantic information to both the browser and developers, making the code more 
+meaningful and accessible. Some examples of semantic elements are 
+<header>, <nav>, <section>, <article>, <footer>, etc.
+
+4. How do you create a hyperlink in HTML?
+
+To create a hyperlink in HTML, you use the <a> tag, also known as the anchor tag. 
+The href attribute is used to specify the destination URL that the link should point to. 
+For example: <a href="https://www.example.com">Click here</a>.
+
+5. Describe the difference between the <strong> and <em> tags in HTML.
+
+The <strong> tag is used to indicate text with strong importance, typically rendered as bold by default. 
+It carries semantic meaning. The <em> tag, on the other hand, is used to emphasize text, 
+typically rendered as italic by default. It denotes emphasis rather than strong importance.
+
+6. What is the difference between inline-block, block and inline displayes.
+
+- block display:
+    Takes up the entire width available by default and starts on a new line.
+    The width, height, margin, and padding properties can be applied.
+- inline display:
+    Takes up only as much width as necessary and does not start on a new line.
+    The width, height, margin-top, margin-bottom, and padding-top, padding-bottom properties do not apply.   
+- inline-block display:
+    Behaves like an inline element but also respects the width, height, margin, and padding properties.
+    Takes up only as much width as necessary and does not start on a new line.    
+
+7. What is the difference between <strong> and <b>
+
+- <strong> tag:
+    The <strong> tag is used to indicate strong importance or importance with higher significance to the content within it.
+    It carries semantic meaning and should be used when the emphasis is important for the understanding or interpretation of the content.
+    By default, the <strong> tag renders the text as bold, but the primary purpose is to convey importance rather than visual styling.
+    Search engines and screen readers give more weight to text enclosed within <strong> tags.
+
+- <b> tag:
+    The <b> tag is used to apply a stylistic or presentational effect to text by making it bold.
+    It does not carry any inherent semantic meaning and should be used only for visual styling purposes.
+    The <b> tag is not recommended for use when semantic emphasis or importance is intended, as it does not provide the same level of semantic clarity as the <strong> tag.
+    Search engines and screen readers may not interpret text within <b> tags as having any particular importance.    
+ 
+    

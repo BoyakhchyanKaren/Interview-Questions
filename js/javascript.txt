@@ -1,0 +1,14 @@
+1. What is the difference between undefined and null in JavaScript?
+2. Explain the concept of closures in JavaScript.
+3. What is event delegation in JavaScript?
+4. How does prototypal inheritance work in JavaScript?
+5. Explain the concept of promises and async/await in JavaScript.
+6. What is the difference between let, const, and var in JavaScript?
+7. What is the purpose of the this keyword in JavaScript?
+8. How does hoisting work in JavaScript?
+9. Explain the difference between == and === in JavaScript.
+10. What is the purpose of the map() method in JavaScript arrays?
+11. Implement Math.max
+12. Implement reverse()
+13. Implement flat()
+14. How can you clone an object in JavaScript?

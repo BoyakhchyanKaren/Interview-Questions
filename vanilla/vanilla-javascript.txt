@@ -1,0 +1,207 @@
+1. What is Vanilla JavaScript?
+
+
+    The DOM stands for Document Object Model. It is a programming interface provided by web browsers that 
+    allows JavaScript and other languages to interact with the content and structure of HTML, XHTML, 
+    or XML documents. In simpler terms, the DOM is a representation of a web page's structure, 
+    and it allows scripts like JavaScript to access, modify, and manipulate the elements 
+    and content of a web page dynamically.
+
+    The DOM represents the web page as a tree-like structure, 
+    where each element in the HTML document is a node in the tree. 
+    Each node corresponds to an element, attribute, or text content of the page. 
+    The relationship between nodes is defined by the hierarchical structure of the HTML.
+
+2. What is the DOM, and how does it relate to JavaScript?
+
+    The DOM (Document Object Model) is a programming interface provided by web browsers, 
+    allowing JavaScript and other languages to interact with the content and structure of HTML,
+    XHTML, or XML documents. It represents the web page as a tree-like structure, where each element 
+    in the HTML document is a node. JavaScript can access, modify, and manipulate these nodes dynamically, 
+    enabling the creation of interactive and dynamic web pages.
+
+3. How can you select an element by its ID in the DOM using JavaScript?
+    <div id="myElement">Hello, World!</div>
+    const element = document.getElementById('myElement');
+    console.log(element.textContent); // Output: "Hello, World!"
+    
+4. Explain the differences between querySelector() and getElementById() methods.
+
+getElementById():
+        This method selects an element by its unique ID attribute. 
+        It's one of the fastest ways to retrieve an element and is commonly used when you know 
+        the specific ID of an element you want to access.
+querySelector(): 
+        This method allows you to select elements using CSS selector syntax. 
+        It can be used to select elements based on classes, tags, attributes, and other criteria. 
+        Unlike getElementById(), it returns only the first matched element.    
+
+
+5. How can you select multiple elements with the same class name in the DOM?
+
+    <p class="paragraph">First paragraph</p>
+    <p class="paragraph">Second paragraph</p>
+
+    const elements = document.querySelectorAll('.paragraph');
+    elements.forEach(element => console.log(element.textContent));
+    // Output: "First paragraph"
+    // Output: "Second paragraph"
+
+6. What is the purpose of the innerHTML property, and how can it be used to manipulate the content of an element?
+
+    The innerHTML property is used to get or set the HTML content of an element as a string. 
+    When you set innerHTML, it replaces the entire content of the element with the specified HTML markup. 
+    However, caution should be exercised when setting innerHTML, as it can lead to security risks 
+    like cross-site scripting (XSS) attacks if the HTML content comes from untrusted sources.
+
+7. How would you programmatically create a new HTML element and add it to the DOM using JavaScript?
+
+    You can create a new HTML element using the document.createElement() method and then append 
+    it to the DOM using various methods like appendChild() or insertBefore(). Here's an example of 
+    creating and adding a new paragraph element:
+
+    const newParagraph = document.createElement('p');
+    newParagraph.textContent = 'This is a new paragraph.';
+
+    const container = document.getElementById('container');
+    container.appendChild(newParagraph);
+
+8. What is the difference between appendChild and insertBefore
+
+    Both `appendChild()` and `insertBefore()` are methods used to add an element to the DOM (Document Object Model) tree. However, they have distinct differences in how they place the new element relative to existing elements in the DOM.
+
+    1. **appendChild()**:
+    - The `appendChild()` method is used to append a new element as the last child of a parent element.
+    - It adds the new element at the end of the parent element's list of children, making it the last child.
+    - If the new element is already a child of another element, it is first removed from its current parent before being appended to the new parent.
+    - It does not require specifying the position of the new element explicitly since it always places it at the end.
+
+            Example:
+
+            ```html
+            <ul id="myList">
+                <li>Item 1</li>
+                <li>Item 2</li>
+            </ul>
+            ```
+
+            ```javascript
+            const myList = document.getElementById('myList');
+            const newListItem = document.createElement('li');
+            newListItem.textContent = 'Item 3';
+
+            myList.appendChild(newListItem); // Adds newListItem as the last child of myList
+            ```
+
+    2. **insertBefore()**:
+    - The `insertBefore()` method is used to insert a new element before an existing element within the same parent.
+    - It takes two arguments: the new element to be inserted and the reference element (existing element) before which the new element should be inserted.
+    - The new element will be placed right before the reference element in the parent's list of children.
+
+            Example:
+
+            ```html
+            <ul id="myList">
+                <li>Item 1</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+            </ul>
+            ```
+
+            ```javascript
+            const myList = document.getElementById('myList');
+            const newListItem = document.createElement('li');
+            newListItem.textContent = 'Item 2';
+
+            const referenceElement = myList.querySelector('li:nth-child(2)');
+            myList.insertBefore(newListItem, referenceElement); // Adds newListItem before the second li element in myList
+            ```
+
+    In summary, `appendChild()` always adds the new element as the last child of the parent, 
+    while `insertBefore()` allows you to specify a specific location within the parent's child list for the new element.
+
+9. What are main event propagation phases in the DOM.
+
+    1. Event Capturing (or Capturing Phase):
+        In the capturing phase, the event travels from the root of the DOM tree down to the target element.
+        It allows event handlers to intercept events before they reach their target, providing an opportunity 
+        to handle the event at a higher level in the DOM hierarchy.
+
+        To listen for events during the capturing phase, you can pass true as the third argument to the addEventListener() method:
+        element.addEventListener('click', eventHandler, true);
+
+    2. Event Bubbling (or Bubbling Phase):
+        In the bubbling phase, the event starts from the target element and bubbles up through its ancestors in 
+        the DOM hierarchy until it reaches the root of the document. This is the default behavior for most events.
+
+        To listen for events during the bubbling phase, you can omit the third argument or pass false 
+        to the addEventListener() method (which is the default behavior):
+        element.addEventListener('click', eventHandler);
+
+
+10. Explain the purpose of the classList property and how you can use it to manipulate CSS classes on an element.
+    The classList property is a read-only property that returns a DOMTokenList representing the class attributes 
+    of an element. It provides methods like add(), remove(), toggle(), and contains() that allow you to easily 
+    add, remove, toggle, or check the presence of CSS classes on an element.        
+            const myDiv = document.getElementById('myDiv');
+            myDiv.classList.add('bold');
+            myDiv.classList.remove('highlighted');
+
+11.  What are data attributes in HTML, and how can you access them using JavaScript?
+
+        Data attributes in HTML are custom attributes that start with the prefix "data-". 
+        They allow developers to store additional data or information directly within an HTML element. 
+        Data attributes are not intended to be displayed visually or affect the element's default behavior; 
+        instead, they provide a way to attach extra data to an element that can be used for scripting, 
+        styling, or other JavaScript operations.
+
+        <div id="product" data-product-id="12345" data-category="electronics">
+            <!-- Element content -->
+        </div>
+        const productDiv = document.getElementById('product');
+        const productId = productDiv.getAttribute('data-product-id');
+
+        console.log(productId); // Output: "12345"
+        Or we can get like this
+        const productDiv = document.getElementById('product');
+        const productId = productDiv.dataset.productId;
+
+        console.log(productId); // Output: "12345"
+
+12. Convert component to Vanilla JS.
+
+
+        const AAA = () => {
+            const [value, setValue] = useState('');
+            return (
+                <input value={value} onChange={(e) => setValue(e.target.value)}/>
+            )
+        }
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vanilla JavaScript Example</title>
+        </head>
+        <body>
+        <input type="text" id="myInput" value="">
+        <script>
+            // JavaScript: Vanilla JS equivalent of the AAA React component
+            function AAA() {
+            const inputElement = document.getElementById('myInput');
+            let value = '';
+
+            function handleChange(e) {
+                value = e.target.value;
+            }
+
+            inputElement.addEventListener('input', handleChange);
+            }
+
+            // Call the function to activate the event listener
+            AAA();
+        </script>
+        </body>
+        </html>

@@ -1,0 +1,87 @@
+1. What is React and what are its key features?
+2. Explain the concept of virtual DOM in React.
+3. What is JSX in React? How does it differ from regular HTML?
+4. What are React components? Explain the difference between functional and class components.
+5. How do you pass data from a parent component to a child component in React?
+6. What is state in React? How is it different from props?
+7. What is the significance of the key prop in React when rendering lists?
+8. Explain the lifecycle methods in React class components.
+9. What are React hooks? Name some built-in hooks and explain their purpose.
+10. How does React Router work? How can you handle routing in a React application?
+11. Why not indexes as key.
+12. Difference between state and props.
+13. What are React hooks? Explain some commonly used hooks and their purposes.
+14. What is the difference between functional components and class components in React? When would you choose one over the other?
+15. How does state management work in React? Explain the role of useState and useEffect hooks in managing state and side effects.
+16. What are controlled components in React? How do they differ from uncontrolled components?
+17. Explain the concept of context in React and how it can be used for global state management.
+18. What is the purpose of the memo function in React? How does it optimize component rendering?
+19. How does React handle error boundaries? Explain the concept of error handling in React.
+20. What are React portals? In what scenarios would you use them?
+21. Explain the concept of higher-order components (HOCs) in React. How can they be used for code reuse and component composition?
+22. What is the difference between HOCs and hooks
+23. Where to use hooks and where HOCs.
+24. What are cons and pros of hooks
+
+
+11. It affects on recouncilation and performance.
+
+    Initially, the list is rendered with keys based on the index of each item.
+    When an item is removed from the middle of the array, the index of the remaining items shifts.
+    React performs a diffing algorithm to reconcile the previous and updated lists. It compares items based on their keys.
+    Since the key (index) of the removed item no longer exists in the updated list, React can't match it with a corresponding item. 
+    As a result, it identifies the wrong item to remove or update, leading to incorrect rendering.
+
+22-23.
+
+Higher-Order Components (HOCs) and hooks are two different approaches in React for achieving code reuse and component composition:
+
+    Higher-Order Components (HOCs):
+
+        HOCs are functions that take a component as input and return an enhanced version of that component.
+        They enable code reuse and allow you to add additional behaviors or functionality to components.
+        HOCs achieve this by wrapping the input component with a container component, providing additional props or modifying the component's behavior.
+        HOCs can be used for cross-cutting concerns such as authentication, logging, or handling state management.
+        They provide a way to share functionality across different components without duplicating code.
+        HOCs are typically created as standalone functions and are used by passing the target component as an argument to the HOC function.
+        Example: Redux's connect function is a commonly used HOC that connects a component to the Redux store.
+        
+    Hooks:
+
+        Hooks are a feature introduced in React 16.8 that allows functional components to have state and use lifecycle methods without the need for class components.
+        Hooks provide a more direct and intuitive way to reuse stateful logic within functional components.
+        They allow you to use React's built-in hooks like useState, useEffect, useContext, and more to manage component state and handle side effects.
+        Hooks promote a more composable and granular approach to code reuse, as they allow you to create and reuse custom hooks that encapsulate specific logic.
+        Hooks are used by invoking them directly within the functional component body.
+        Hooks offer a simpler and more straightforward alternative to class components by eliminating the need for complex inheritance and the this keyword.
+        Example: The useState hook allows you to add local component state to a functional component without needing to convert it to a class component.
+        In summary, HOCs are functions that enhance components by wrapping them, while hooks are functions that enable code reuse and stateful logic within functional components.
+        Both approaches offer ways to achieve code reuse and composition,
+        but hooks provide a more modern and direct approach that simplifies the usage of state and lifecycle methods.
+
+
+
+24.
+
+    Pros of using hooks:
+        1. Improved Code Organization: Hooks allow you to organize your code in a more readable and cohesive manner by keeping related logic together within the same function. This can lead to cleaner and more maintainable code.
+
+        2. Reusability: Hooks promote code reuse by allowing you to extract and share stateful logic using custom hooks. This makes it easier to share functionality across different components without the need for higher-order components (HOCs) or render props.
+
+        3. Simplicity and Conciseness: Hooks provide a simpler and more intuitive way to work with state and lifecycle methods compared to class components. They reduce the amount of boilerplate code, resulting in more concise and readable code.
+
+        4. Enhanced Testing: With hooks, it becomes easier to test individual units of code. Since hooks are simple functions, you can test them in isolation without the need to mount entire components.
+
+        5. Performance Optimizations: Hooks offer performance optimization options like memoization (`useMemo`, `useCallback`) and fine-grained control over re-renders. This can help optimize rendering performance and improve the overall efficiency of your React application.
+
+    Cons of using hooks:
+        1. Learning Curve: If you are already familiar with class components and the lifecycle methods, transitioning to hooks may require some adjustment and learning. Hooks introduce new concepts and patterns that may take time to understand and apply correctly.
+
+        2. Compatibility: Hooks were introduced in React 16.8, so if you're working with older versions of React or dealing with legacy codebases, you may encounter compatibility issues or limitations when trying to integrate hooks.
+
+        3. Tooling and Ecosystem: Since hooks are a relatively new addition to React, the tooling and ecosystem may not be as mature compared to class components. Some existing libraries and components may not fully support hooks yet.
+
+        4. Possible Abstraction Issues: Hooks can make it easier to extract and reuse logic, but they can also lead to excessive abstraction and fragmented code if not used judiciously. Care should be taken to strike a balance between code reuse and code readability/maintainability.
+
+        5. Limited Use in Conditional Hooks: Hooks should not be used conditionally within components (e.g., inside loops or if statements), as the order of hooks must remain the same on each render. This can sometimes limit the flexibility when conditional logic is required.
+
