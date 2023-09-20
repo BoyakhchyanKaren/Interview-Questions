@@ -21,7 +21,11 @@
 21. Explain the concept of higher-order components (HOCs) in React. How can they be used for code reuse and component composition?
 22. What is the difference between HOCs and hooks
 23. Where to use hooks and where HOCs.
-24. What are cons and pros of hooks
+24. What are cons and pros of hooks.
+25. What is react Fiber.
+26. What is JSX.
+27. Describe data flow in React.
+28. What is new in react 18.
 
 
 11. It affects on recouncilation and performance.
@@ -85,3 +89,34 @@ Higher-Order Components (HOCs) and hooks are two different approaches in React f
 
         5. Limited Use in Conditional Hooks: Hooks should not be used conditionally within components (e.g., inside loops or if statements), as the order of hooks must remain the same on each render. This can sometimes limit the flexibility when conditional logic is required.
 
+
+25. React Fiber was introduced to improve performance of react application, especially when there are complex interactions that should be handled by the user.
+    The goal of react fiber is to provide more efficient and flexible way to manage rendering. Benefits of react fiber are.
+    1. Incremental Rendering. React fiber allows rendering process to be paused, aborted or resumed which help to keep applocation responsive.
+    2. Prioritization and scheduling. React fiber has priority levels for rendering tasks and ensure to keep user interface responsive even if there are many complex tasks.
+
+
+28. What is new in react 18.
+    1. Automatic Batching.
+        it means when we have multiple functions which set new values in the state using one handler all will be done toghater.
+            const handler = () => {
+                setNewName('Karen');
+                setNewAge(23);
+                setNewHeight(185);
+            };
+    2. Transition.
+        Transtion is used to distinguish urgent and no urget tasks, blocking or non-blocking tasks in react.
+        We can use transtion calling useTransition hook.
+        const [isPending, startTransition] = useTransition();     
+            isPending property tells us whether there is a pending transtion or no.
+            startTransition lets us to mark a state update as a transtion.
+
+        For example if we have tabs, user clicks on one tab and then changes his mind and clicks another tab, if we mark tabs update as a transtion,
+        we will let user to not wait for first tab render, he will immediatelly see last tab that has been clicked.      
+    3. Suspense.
+        Before react 18, if there was a component which did a api request inside and had slow behavior that one component will slow donw entire application,
+        but with React Suspense it will not slow down entire application it will show for example some loading animation view and minwhile prepare slow component render and will put in the same stream with other components.
+        it can be done by wrapping components inside Suspense and pass fallback props as a loading animation or what you need to pass.
+    4. Concurrency.
+        This feature allows react to interrupt, pause, restart or quite a render.
+    5. some client side api changes, new hooks.    
