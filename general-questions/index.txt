@@ -1,0 +1,53 @@
+1. For example when we put facebook.com in the browser search and click enter, 
+   what is happening, how browser works in that time?
+
+        When we put facebook.com in the browser search and press enter browser does some complex steps, with this sequence.
+        1. Browser contacts with DNS (Domain Name System) server which is literally the database for domain names, finds the associate 
+        IP address and return that IP.
+        2. After receiving IP address browser starting to create TCP (Transmission Control Protocol) connected with Facebook server. 
+        Once the TCP connection is established, browser can send and receive data from Facebook server.
+        3. Browser sends HTTP (Hypertext Transfer Protocol) request to Facebook server. 
+        4. Facebook server receives a HTTP request and starts to process it.
+        5. Server sends HTTP response back to the browser which includes HTML, CSS, JS.
+        6. After browser receives a http response it starts to create a web page. It parses HTML to create DOM (document object model) which 
+        represents the structure of the web page. It processes CSS for formatting and styling and javascript for interactivity and functionality.
+        7. Then browser paints whole rendered application on the screen, When we click somewhere it will start to make 3-7 steps, (do request, receive request....);
+        8. Browser ofter caches resources like images, stylesheets, and scripts to speed up the process.
+        
+            
+2. What is Critical Rendering Path.
+
+        Critical Rendering Path (CRP) is the series of steps to load html, css, js and paint a web page.
+
+        1. HTML Parsing: Browser starts to parse html code from top to buttom, it encounters some tags which represent resources like images, scripts and etc.
+        2. Constructing the DOM (Document Object Model): When browser processes html it create tree-like structure which is called DOM. DOM represents the structure of the 
+           web page including all elements with their text and content.
+        3. CSS Parsing and Styling: When browser encounters CSS it creates CSSOM CSS object model and figures out how element should look like in the web page.
+        4. Render Tree Construction: Browser combaines DOM and CSSOM to create Render Tree. RT contains all elements which should be displayed on the screen,
+        5. Step Reflow (Layout): Browser calculates size of each element including paddings, margins and positions.
+        6. Painting: Finally browser prints all pixels on the screen based on render tree information.
+
+        Why it is called critical? The goal of critical rendering path is to display the most improtant content of the web page
+        as soons as possible allowing user to see and interact with the page.
+
+3. What are Repaint and Reflow.
+
+        They both are the main aspects of rendering web page in the browser.
+        1. Reflow also called Layout is the process of calculating sizes of elements like margins, paddings, positioning,
+           this process is needed when something is changed on the screen which can affect on the layout of the web page, that is Why
+           it is expensive process.
+        2. Repaint is the process of updating pixels on the screen to reflect changes in the view. 
+           it is faster because it includes onlt process to update affected pixels.
+
+4. What is the difference between async and defer.
+
+        They both are used to load scripts in javascript asynchronously.
+        1. When we use async the script will be started to load when browser will encounter the script tag, but browser will not wait for its execution.
+           Browser will continue the execution but when script will be fully loaded it will be executed immediately interupting the order of parsing.
+
+        2. When we use defer, we again tell browser to load script asynchronously, but the script will be executed in order, whitout 
+           interupting parsing process, unlike it will be executed after full html code and DOM are ready. 
+
+
+5. What is design system?
+

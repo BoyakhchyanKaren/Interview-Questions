@@ -12,3 +12,19 @@
 12. Implement reverse()
 13. Implement flat()
 14. How can you clone an object in JavaScript?
+15. We have 2 examples
+
+    1. function User(name, age) {
+            this.name = name;
+            this.age = age;
+       }
+       const user = new User('Karen', 23);
+
+    2. function User(name, age) {
+        return {name, age};
+       }
+       const user = new User('Karen', 23);
+
+  What is the output for console.log(user instanceof User) for both examples and why ?
+
+16.        

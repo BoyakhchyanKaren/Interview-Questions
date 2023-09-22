@@ -26,6 +26,8 @@
 26. What is JSX.
 27. Describe data flow in React.
 28. What is new in react 18.
+29. If you have react 17 and want to install react 18 in your existing project, which kind of steps you need to follow.
+30. See Example how to make it?
 
 
 11. It affects on recouncilation and performance.
@@ -120,3 +122,39 @@ Higher-Order Components (HOCs) and hooks are two different approaches in React f
     4. Concurrency.
         This feature allows react to interrupt, pause, restart or quite a render.
     5. some client side api changes, new hooks.    
+
+
+
+29. The first and the main step that you need to follow is to change index.ts or index.js file. Previously in react 17 there is a render function which renders whole application,
+    now in react 18-in there is a createRoot function which accepts selector and prints the application.
+
+
+
+30. We have 2 components. If we click on the button the state will be changed and App component will be rendered, but List will be rendered as well.
+    How to make List component to not render every time.
+    Consider 2 examples, List component with and without props.
+
+
+    const List = () => {
+        console.log('List render');
+
+        return (
+            <h2>List</h2>
+        )
+    };
+
+    const App = () => {
+        const [increment, setIncrement] = useState(0);
+        console.log('App Render');
+
+        return (
+            <div>
+                <h1>App component</h1>
+                <span>{increment}</span>
+                <button onClick={() => setIncrement((prev) => prev + 1)}>Click to increment</button>
+                <List />
+            </div>   
+        )
+    };
+
+    
