@@ -27,4 +27,7 @@
 
   What is the output for console.log(user instanceof User) for both examples and why ?
 
-16.        
+16. Is it possible to bind a function several times. 
+
+      Like: doSomething.bind(person).bind(people).bind(user);
+      how will it work ?       
