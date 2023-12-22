@@ -1,0 +1,26 @@
+1. Reset last commit.
+
+            git reset --soft HEAD~1
+
+
+2. Squash commits.
+
+    git squash
+    //you are in your branch from which commits you want to squash
+    git checkout master
+    git pull
+    git checkout current_branch
+    git merge master
+    git checkout -b...
+    git checkout current_branch
+    git reset --hard origin/master
+    git merge origin copy/SQPP-217 --squash
+    git add .
+    git commit -m "one commit will cover all commits"
+    git push
+
+3. Revert changes to particular commit
+
+    git reflog.
+    take commit name what you need
+    git reset --hard HEAD{IdOfTheCommit}

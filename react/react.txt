@@ -28,7 +28,7 @@
 28. What is new in react 18.
 29. If you have react 17 and want to install react 18 in your existing project, which kind of steps you need to follow.
 30. See Example how to make it?
-
+31. Difference between useEffect and useLayoutEffect.
 
 11. It affects on recouncilation and performance.
 
@@ -94,29 +94,29 @@ Higher-Order Components (HOCs) and hooks are two different approaches in React f
 
 25. React Fiber was introduced to improve performance of react application, especially when there are complex interactions that should be handled by the user.
     The goal of react fiber is to provide more efficient and flexible way to manage rendering. Benefits of react fiber are.
-    1. Incremental Rendering. React fiber allows rendering process to be paused, aborted or resumed which help to keep applocation responsive.
+    1. Incremental Rendering. React fiber allows rendering process to be paused, aborted or resumed which help to keep application responsive.
     2. Prioritization and scheduling. React fiber has priority levels for rendering tasks and ensure to keep user interface responsive even if there are many complex tasks.
 
 
 28. What is new in react 18.
     1. Automatic Batching.
-        it means when we have multiple functions which set new values in the state using one handler all will be done toghater.
+        it means when we have multiple functions which set new values in the state using one handler all will be done together.
             const handler = () => {
                 setNewName('Karen');
                 setNewAge(23);
                 setNewHeight(185);
             };
     2. Transition.
-        Transtion is used to distinguish urgent and no urget tasks, blocking or non-blocking tasks in react.
-        We can use transtion calling useTransition hook.
+        Transition is used to distinguish urgent and no urgent tasks, blocking or non-blocking tasks in react.
+        We can use transition calling useTransition hook.
         const [isPending, startTransition] = useTransition();     
-            isPending property tells us whether there is a pending transtion or no.
-            startTransition lets us to mark a state update as a transtion.
+            isPending property tells us whether there is a pending transition or no.
+            startTransition lets us to mark a state update as a transition.
 
         For example if we have tabs, user clicks on one tab and then changes his mind and clicks another tab, if we mark tabs update as a transtion,
-        we will let user to not wait for first tab render, he will immediatelly see last tab that has been clicked.      
+        we will let user to not wait for first tab render, he will immediately see last tab that has been clicked.      
     3. Suspense.
-        Before react 18, if there was a component which did a api request inside and had slow behavior that one component will slow donw entire application,
+        Before react 18, if there was a component which did a api request inside and had slow behavior that one component will slow dont entire application,
         but with React Suspense it will not slow down entire application it will show for example some loading animation view and minwhile prepare slow component render and will put in the same stream with other components.
         it can be done by wrapping components inside Suspense and pass fallback props as a loading animation or what you need to pass.
     4. Concurrency.
@@ -158,3 +158,22 @@ Higher-Order Components (HOCs) and hooks are two different approaches in React f
     };
 
     
+31. What kind of architectural patterns can be used in React.
+
+    1. Component-based Architecture: or sometimes called Component Driven Architecture
+    2. Flux Architecture: This pattern is responsible to ensure one directional data flow in react to maintain the state easily.
+    3. Container/Presentation Pattern: In this pattern whole application is divided into two parts, Container Components and Presentation Components, Containers to hold the state and Presentations to show UI.
+    4. Micro Frontends: In this pattern you break whole application into small independently parts. 
+    5. Atomic Design: Divide components into small parts as reusable ui-components and use them in the application.
+
+32. What are some common security considerations when developing React applications, and how can you mitigate potential vulnerabilities?
+
+    1. Cross-Site-Scripting: To prevent unsecure data injection to inputs of application need to properly sanitize inputs, put proper validation and use package such as DOMPurify,.
+    2. State Management: Need to properly manage the state of application to prevent unauthorized attempts to application.
+    3. API Security: Implement API security properly, for example customize CORS, to restrict domain attacks.
+    
+       
+
+33. Explain client side rendering, server side rendering, static site generation, incremental static regeneration.
+
+       

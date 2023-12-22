@@ -1,0 +1,27 @@
+1. What is Testing Pyramid.
+
+    Testing pyramid is one of the main concepts to guide application testing process.
+    It consists of 3 main layers.
+
+        1. Unit Testing: The bottom of the pyramid. Unit tests are focused on testing small parts of the application, for example 
+           functions or small methods, components. Common packages are Jest and Mocha.
+        2. Integration Testing: The middle of the pyramid. Integration tests ensure that different units or components of the application
+           work together as expected, namely they test how different parts of application are communicating with each other. 
+           Common packages are React Testing Library.
+        3. End To End Testing: Top of the Pyramid. E2E are focused to test whole application as a real user interactions and workflows.
+           Common packages are cypress.
+
+2. What is Testing Cone and what is the difference between Testing Pyramid and Testing Cone.
+
+    Testing Cone is one of the testing concepts to ensure high test coverage and full working functionality.
+    It is similar to the Testing Pyramid, the difference is that Testing Cone emphases E2E testing, it places more importance on end to end testing.
+
+3. What is CI/CD
+
+    CI/CD stands as Continues Integration and Continues Delivery
+    The benefits are to ensure high quality, faster development cycle, reduced risks.
+
+    During Continues Integration multiple contributors of the project wrote and merge their codes into one common repository.
+    During Continues Delivery code automatically deploys to various environments ensuring that we are always ready to deploy code.
+
+4.     

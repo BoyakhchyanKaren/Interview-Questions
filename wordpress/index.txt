@@ -1,0 +1,33 @@
+1. What is wordpress?
+
+    Wordpress is open source content management system, that is used to create and manage websites. It offers 
+    various user friendly templates to create responsive web applications.
+
+2. What is the REST API in WordPress, and how can React.js be used to consume data from it?
+
+    Rest API is an interface in wordpress that allows to have an access of wordpress content and use it's pages, users or templates
+    Frontend uses HTTP to get data from wordpress by making get, post requests.
+
+3. What is the advantages and disadvantages of using Wordpress.
+
+    Advantages:
+
+        1. User friendly interface
+        2. Various themes to modify web application
+        3. Active community and team to support questions.
+        4. SEO-Friendly
+        5. Quick production lunch for free.
+
+    Disadvantages:
+
+        1. Security
+        2. Performance
+        3. Dependency on Themes and Plugins
+
+4. How to make secure Wordpress application, how to protect existing wordpress project.
+
+    1. Keep WordPress Core, Themes, and Plugins Updated - Don't use old and unprotected plugins.
+    2. Strong Passwords - Put strong passwords into your admin page, databases.
+    3. Limit Login Attempts - Put some limitation on your login functionality to not allow attempt after 3 times failure.
+    4. Two-Factor Authentication (2FA) - Put two factor google or microsoft authentication.
+

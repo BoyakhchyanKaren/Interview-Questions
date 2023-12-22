@@ -4,7 +4,7 @@
         When we put facebook.com in the browser search and press enter browser does some complex steps, with this sequence.
         1. Browser contacts with DNS (Domain Name System) server which is literally the database for domain names, finds the associate 
         IP address and return that IP.
-        2. After receiving IP address browser starting to create TCP (Transmission Control Protocol) connected with Facebook server. 
+        2. After receiving IP address browser starting to create TCP (Transmission Control Protocol) connection with Facebook server. 
         Once the TCP connection is established, browser can send and receive data from Facebook server.
         3. Browser sends HTTP (Hypertext Transfer Protocol) request to Facebook server. 
         4. Facebook server receives a HTTP request and starts to process it.
@@ -19,7 +19,7 @@
 
         Critical Rendering Path (CRP) is the series of steps to load html, css, js and paint a web page.
 
-        1. HTML Parsing: Browser starts to parse html code from top to buttom, it encounters some tags which represent resources like images, scripts and etc.
+        1. HTML Parsing: Browser starts to parse html code from top to bottom, it encounters some tags which represent resources like images, scripts and etc.
         2. Constructing the DOM (Document Object Model): When browser processes html it create tree-like structure which is called DOM. DOM represents the structure of the 
            web page including all elements with their text and content.
         3. CSS Parsing and Styling: When browser encounters CSS it creates CSSOM CSS object model and figures out how element should look like in the web page.
@@ -27,8 +27,8 @@
         5. Step Reflow (Layout): Browser calculates size of each element including paddings, margins and positions.
         6. Painting: Finally browser prints all pixels on the screen based on render tree information.
 
-        Why it is called critical? The goal of critical rendering path is to display the most improtant content of the web page
-        as soons as possible allowing user to see and interact with the page.
+        Why it is called critical? The goal of critical rendering path is to display the most important content of the web page
+        as sons as possible allowing user to see and interact with the page.
 
 3. What are Repaint and Reflow.
 
@@ -37,7 +37,7 @@
            this process is needed when something is changed on the screen which can affect on the layout of the web page, that is Why
            it is expensive process.
         2. Repaint is the process of updating pixels on the screen to reflect changes in the view. 
-           it is faster because it includes onlt process to update affected pixels.
+           it is faster because it includes only process to update affected pixels.
 
 4. What is the difference between async and defer.
 
@@ -49,5 +49,26 @@
            interupting parsing process, unlike it will be executed after full html code and DOM are ready. 
 
 
-5. What is design system?
+5. What are Web vulnerabilities?
 
+         There is a OWASP which represents top 10 critical vulnerabilities
+
+         1. Cross-Site Scripting (XSS): when attackers inject scripts into web application. => Use JSX or DOMPurify.
+         2. Cross-Site Request Forgery (CSRF): when user does everything which attacker wants without their consent. => Use Anti-CSRF
+         3. Injection Attacks: when attackers inject bad data into we application. => validate or sanitize user input.
+         4. Insecure Authentication: when there is a weak or improper authentication mechanism.
+         5. Components with Known Vulnerabilities: when using third-party libraries with known security issues.
+
+
+6. Long polling vs websocket.
+
+   Long polling and WebSockets are two different techniques used for real-time communication between a 
+   client and a server. They both serve the purpose of enabling real-time data exchange, 
+   but they have use cases. Let's compare Long Polling and WebSockets:
+
+      1. Long polling is half-duplex, that means when client sends request to the server, server holds the request open until new data is available.
+         Web Sockets are full-duplex, that means client and server can send requests to each other independently.
+      2. Long polling is preferable when browser doesn't support sockets or real time updates are not required
+         web sockets are ideal for real time applications, chats.
+      3. Long Polling is using standard HTTP protocol.
+         when sockets using their own WebSockets protocol.        

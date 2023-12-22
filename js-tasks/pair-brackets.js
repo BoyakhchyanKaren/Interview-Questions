@@ -19,9 +19,7 @@ const areAllBracketsHavePair = (brackets) => {
                 }
             }
         }
+        return !stack.length;
     };
-
-    doWithCondition(firsItem);
-
-    return !stack.length;
+    return doWithCondition(firsItem);
 };
