@@ -171,9 +171,139 @@ Higher-Order Components (HOCs) and hooks are two different approaches in React f
     1. Cross-Site-Scripting: To prevent unsecure data injection to inputs of application need to properly sanitize inputs, put proper validation and use package such as DOMPurify,.
     2. State Management: Need to properly manage the state of application to prevent unauthorized attempts to application.
     3. API Security: Implement API security properly, for example customize CORS, to restrict domain attacks.
-    
-       
 
+
+       
 33. Explain client side rendering, server side rendering, static site generation, incremental static regeneration.
 
-       
+
+    Before going through these concepts let's first understand the flow.
+
+    Source Code -> Build -> Server -> Client (Web Browser)
+
+1. Source code is something that we write in the editor.
+2. Build process is when we run "npm run build" and the build process is starting, it created a build directory with production build of react application.
+3. Server can be either our local static server or netlify vercel or something else.
+4. web browser for showing some value.
+
+
+1. CSR - Client Side Rendering.
+
+    During client side rendering when we write some code and run "npm run dev", the local server in out case it can be Webpack Dev Server starts to work and for inital load
+    the browser sends request to the local server to get intial html page. Server sends initial html page along with javascript to the clinet and the code starting to execute on the client side,
+    so that the initial load of the client side rendering can take some time.
+
+2. SSR - Server Side Rendering.
+
+    The Rendering comparing with the CSR is done on the server side instead of client side. So when the browser sends request to get the initial page, the next development server
+    which is in our case is local server, sends the fully loaded page to the browser. So every time when we need to navigate to another page or something else, the browser sends request
+    to the server to get fully loaded page.
+
+
+
+35. Where react developer should use useCallback hook ?
+
+useCallback is used to keep the reference of the function which is used inside the component, so that we can use the same reference
+of the function while re-rendering the component. The reference will be changed when one of the variables in the dependencies array changes.
+
+There are some examples when we must use useCallback hook.
+
+1. When the function is one of the dependencies array of the useEffect.
+        So the handleChange should be used isnide useCallback.
+
+        function Component(){
+        const [state, setState] = useState()
+        
+        // Should use `useCallback`
+        function handleChange(input){
+            setState(...)
+        }
+
+        useEffect(()=>{
+            handleChange(...)
+        },[handleChange])
+
+        return ...
+        }
+
+
+2. When the function is being passed to their children components. Especially  when it is the dependency of children useEffect.
+    If we don't use useCallback it will lead infinite loop.
+
+function Parent(){
+  const [state, setState] = useState()
+  
+  function handleChange(input){
+    setState(...)
+  }
+
+  return <Child onChange={handleChange} />
+}
+
+function Child({onChange}){
+  const [state, setState] = useState()
+  
+  useEffect(()=>{
+    onChange(...)
+  },[onChange])
+
+  return "Child"
+}
+
+3. When you use React Context that holds a state and returns only the state setters functions, 
+    you need the consumer of that context to not rerender every time the state update as it may harm the performance.
+
+    const Context = React.createContext();
+
+    function ContextProvider({children}){
+    const [state, setState] = useState([]);
+    
+    // Should use `useCallback`
+    const addToState = (input) => {
+        setState(prev => [...prev, input]);
+    }
+
+    // Should use `useCallback`
+    const removeFromState = (input) => {
+        setState(prev => prev.filter(elem => elem.id !== input.id));
+    }
+
+    // Should use `useCallback` with empty []
+    const getState = () => {
+        return state;
+    }
+
+    const contextValue= React.useMemo(
+        () => ({ addToState , removeFromState , getState}),
+        [addToState , removeFromState , getState]
+    );
+
+    // if we used `useCallback`, our contextValue will never change, and all the subscribers will not re-render
+    <Context.Provider value={contextValue}>
+        {children}
+    </Context.Provider>
+    }
+
+
+
+4. If you are subscribed to the observer, timer, document events, and need to unsubscribe when the component 
+    unmounts or for any other reason. So we need to access the same reference to unsubscribe from it.
+
+    function Component(){
+        // should use `useCallback`
+        const handler = () => {...}
+        
+        useEffect(() => {
+            element.addEventListener(eventType, handler)
+            return () => element.removeEventListener(eventType, handler)
+        }, [eventType, element])
+
+
+        return ...
+    }
+
+So there are 4 basic situations when we need to use useCallback
+    1. Passing function from parent to child.
+    2. Having function that is the dependency of useEffect hook.
+    3. Having React Context that holds a state and returns only the state setters functions.
+    4. If we subscribed to the observers, events and need to unsubscribe we have to unsubscribe from the same reference that we subsribed and the useCallback is ideal to keep the reference.
