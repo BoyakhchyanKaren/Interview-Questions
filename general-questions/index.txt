@@ -72,3 +72,64 @@
          web sockets are ideal for real time applications, chats.
       3. Long Polling is using standard HTTP protocol.
          when sockets using their own WebSockets protocol.        
+
+7. Expalin SOLID.
+
+SOLID is a design principle which is divided into 5 parts.
+
+   1. Single Responsibility
+
+      According to this principle, each class or function should have only one reason to change, because if it depends on
+      functionality of the other class or function changing something in one place will cause issues in other place.
+
+   2. Open/Closed principle
+
+      According to this principle, class should be open for extensions but close for modifications.
+      It means we can easily for example extend the class but can't modify some logic inside in it to customize our needs.
+
+   3. Liskov Substitution Principle
+
+      According to this principle, derived classes can be substitutable for their base classes. This ensures that 
+      derived class can be considered as a base class without modifying the base class functionality.
+
+                  // notification.js
+                  class Notification {
+                  send(message) {
+                     throw new Error("Method not implemented");
+                  }
+                  }
+
+                  // emailNotification.js
+                  class EmailNotification extends Notification {
+                  send(message) {
+                     console.log(`Sending email: ${message}`);
+                  }
+                  }
+
+                  // smsNotification.js
+                  class SMSNotification extends Notification {
+                  send(message) {
+                     console.log(`Sending SMS: ${message}`);
+                  }
+                  }
+
+                  function sendNotification(notification, message) {
+                  notification.send(message);
+                  }
+
+                  const emailNotification = new EmailNotification();
+                  const smsNotification = new SMSNotification();
+
+                  sendNotification(emailNotification, "Hello via Email");
+                  sendNotification(smsNotification, "Hello via SMS");
+
+
+   4. Based on this principle, instead of having one large, general-purpose interface, it's better to have multiple, smaller, and more specific interfaces.
+
+
+   5. Based on this principle High-level modules should not depend on low-level modules.
+                              Both should depend on abstractions. 
+                              Abstractions should not depend on details. 
+                              Details should depend on abstractions.
+
+

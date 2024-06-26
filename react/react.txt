@@ -92,10 +92,11 @@ Higher-Order Components (HOCs) and hooks are two different approaches in React f
         5. Limited Use in Conditional Hooks: Hooks should not be used conditionally within components (e.g., inside loops or if statements), as the order of hooks must remain the same on each render. This can sometimes limit the flexibility when conditional logic is required.
 
 
-25. React Fiber was introduced to improve performance of react application, especially when there are complex interactions that should be handled by the user.
-    The goal of react fiber is to provide more efficient and flexible way to manage rendering. Benefits of react fiber are.
-    1. Incremental Rendering. React fiber allows rendering process to be paused, aborted or resumed which help to keep application responsive.
-    2. Prioritization and scheduling. React fiber has priority levels for rendering tasks and ensure to keep user interface responsive even if there are many complex tasks.
+25. React Fiber was introduced to improve performance of react application, 
+    especially when there are complex interactions that should be handled by the user.
+        The goal of react fiber is to provide more efficient and flexible way to manage rendering. Benefits of react fiber are.
+        1. Incremental Rendering. React fiber allows rendering process to be paused, aborted or resumed which help to keep application responsive.
+        2. Prioritization and scheduling. React fiber has priority levels for rendering tasks and ensure to keep user interface responsive even if there are many complex tasks.
 
 
 28. What is new in react 18.
@@ -119,7 +120,7 @@ Higher-Order Components (HOCs) and hooks are two different approaches in React f
         Before react 18, if there was a component which did a api request inside and had slow behavior that one component will slow dont entire application,
         but with React Suspense it will not slow down entire application it will show for example some loading animation view and minwhile prepare slow component render and will put in the same stream with other components.
         it can be done by wrapping components inside Suspense and pass fallback props as a loading animation or what you need to pass.
-    4. Concurrency.
+    4. React Fiber.
         This feature allows react to interrupt, pause, restart or quite a render.
     5. some client side api changes, new hooks.    
 
@@ -189,16 +190,34 @@ Higher-Order Components (HOCs) and hooks are two different approaches in React f
 
 1. CSR - Client Side Rendering.
 
-    During client side rendering when we write some code and run "npm run dev", the local server in out case it can be Webpack Dev Server starts to work and for inital load
-    the browser sends request to the local server to get intial html page. Server sends initial html page along with javascript to the clinet and the code starting to execute on the client side,
+    During client side rendering when we write some code and run "npm run dev", 
+    the local server (in our case it can be Webpack Dev Server) starts to work and for inital load
+    the browser sends request to the local server to get intial html page. 
+    Server sends initial html page along with javascript to the clinet and the code starting to execute on the client side,
     so that the initial load of the client side rendering can take some time.
 
 2. SSR - Server Side Rendering.
 
-    The Rendering comparing with the CSR is done on the server side instead of client side. So when the browser sends request to get the initial page, the next development server
-    which is in our case is local server, sends the fully loaded page to the browser. So every time when we need to navigate to another page or something else, the browser sends request
+    The Rendering comparing with the CSR is done on the server side instead of client side.
+    So when the browser sends request to get the initial page, the next development server
+    which is in our case is local server, sends the fully loaded page to the browser. 
+    So every time when we need to navigate to another page or something else, the browser sends request
     to the server to get fully loaded page.
 
+3. SSG - Static Site Generation.
+
+    While using static site generation we should be aware that the application will be generated on build time. What does it mean?
+    So basically when we create a web site using static site generation approach we already know which kind of data we need to build the page.
+    So we don't need to build every time, because the data can be gone from CMS and we just show it.
+    It is very helpful to use in landing pages.
+
+4. ISR - Incremental Static ReGeneration.
+
+    ICR is providing all benefits of static site generaion, but using static site generation we can't update the page when something
+    from CMS is changed, so we need to have revalidate property for each page to control the build time.
+    
+
+and when would you use each?
 
 
 35. Where react developer should use useCallback hook ?
@@ -307,3 +326,30 @@ So there are 4 basic situations when we need to use useCallback
     2. Having function that is the dependency of useEffect hook.
     3. Having React Context that holds a state and returns only the state setters functions.
     4. If we subscribed to the observers, events and need to unsubscribe we have to unsubscribe from the same reference that we subsribed and the useCallback is ideal to keep the reference.
+
+
+36. Explain Webpack ?
+
+    Webpack is a module boundler which takes the module with its all dependencies and generated static assets suitable
+    for the browser. Webpack support code splitting which is a technique to split bundle into smaller chunks that can be loadded on demand.
+    This technique improves the loading time of the application and load the chunks that are needed for only the current page.
+
+
+37. Explain useReducer.
+
+    useReducer is similar with useState but it used to keep more complex states like objects as a state and it provides 
+    function which is used to change the state.
+
+
+38. Reconciliation in React.
+
+
+        Reconciliation is the process when React determines virtual DOM updates.
+            1. When the componenent's state or props change, React triggers re-render for component.
+            2. The component's render method returns new Virtual DOM.
+            3. Using the Diffing Algorithm React compares Virtual DOM tree with Real DOM.
+            4. Based on the differences React updates the Real DOM to match with Virtual DOM recent changes.
+
+        React gives some methods to control the Reconciliation process.
+            1. componentDidUpdate
+            2. shouldComponentUpdate
