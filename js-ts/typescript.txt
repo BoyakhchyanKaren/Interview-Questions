@@ -1,12 +1,15 @@
-1. What is the difference between interface and eventType
+1. What is the difference between interface and type
 
 
-        1. 
-            Interfaces can be extended by another interface and can be implemented by the classes.
+        1. Interfaces can be extended by another interface and can be implemented by the classes.
             Types can't be extended, they are using unions to create one combined type 
 
-        2.
-
-            Interfaces in the signle document can be created with the same name, in this case they will be merged in the usage
+        2. Interfaces in the signle document can be created with the same name, in this case they will be merged in the usage
             Types are not supporting merging, they use intersactions.
         
+
+
+2. What is the difference between any and unknown.
+
+        1. No type safety for any, requires type checks for unknown.
+        2. Any operation without checks allowed while using any, 	Operations only allowed after type check when using unknown.

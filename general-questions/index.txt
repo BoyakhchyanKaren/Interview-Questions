@@ -124,10 +124,14 @@ SOLID is a design principle which is divided into 5 parts.
                   sendNotification(smsNotification, "Hello via SMS");
 
 
-   4. Based on this principle, instead of having one large, general-purpose interface, it's better to have multiple, smaller, and more specific interfaces.
+   4. Interface Segregation Principle
+   
+      Based on this principle, instead of having one large, general-purpose interface, it's better to have multiple, smaller, and more specific interfaces.
 
 
-   5. Based on this principle High-level modules should not depend on low-level modules.
+   5. Dependency Inversion Principle
+   
+      Based on this principle High-level modules should not depend on low-level modules.
                               Both should depend on abstractions. 
                               Abstractions should not depend on details. 
                               Details should depend on abstractions.

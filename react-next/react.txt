@@ -353,3 +353,28 @@ So there are 4 basic situations when we need to use useCallback
         React gives some methods to control the Reconciliation process.
             1. componentDidUpdate
             2. shouldComponentUpdate
+
+
+39. How Hydration Works in Next.js?
+        
+        Initial Server-Side Render:
+
+            When a user requests a page, Next.js may render the page on the server (SSR)
+            or generate static HTML at build time (SSG). 
+            The server sends this fully-rendered HTML to the client (the user's browser).
+            This HTML includes the content of the page, which makes the page load quickly and 
+            allows users to see the content immediately.
+            
+        Sending JavaScript to the Client:
+
+            Along with the HTML, the server also sends a JavaScript bundle to the client. 
+            This bundle contains the React components and other JavaScript needed to make the page interactive.
+        
+        Hydration Process:
+
+            Once the browser receives the HTML and the JavaScript bundle, 
+            it loads the page and then executes the JavaScript.
+            During hydration, React "reuses" the pre-rendered HTML and attaches event
+            listeners and state to make the page interactive. Essentially, 
+            React takes control of the existing HTML and turns it into a fully interactive 
+            React application without re-rendering the entire page.
