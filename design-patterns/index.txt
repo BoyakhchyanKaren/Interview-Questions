@@ -1,0 +1,65 @@
+1.  Singleton Pattern
+
+
+    Description: Ensures that a class has only one instance and provides a global point of access to that instance.
+
+    class Singleton {
+        constructor() {
+            if (!Singleton.instance) {
+            Singleton.instance = this;
+            this.state = {};
+            }
+            return Singleton.instance;
+        }
+
+        getState() {
+            return this.state;
+        }
+
+        setState(newState) {
+            this.state = { ...this.state, ...newState };
+            }
+    }
+
+    const instance = new Singleton();
+    Object.freeze(instance);
+
+
+2. Observer Pattern
+
+    Description: Defines a one-to-many dependency between objects so that when one object changes state, 
+                 all its dependents are notified and updated automatically.
+
+
+
+3. Factory Pattern
+    
+    Description: Provides a way to create objects without specifying the exact class of object that will be created. 
+                 It encapsulates the object creation logic.
+
+4. Decorator Pattern
+
+    Description: Allows you to add new functionality to an existing object without modifying its structure. 
+                 It wraps the original object to extend its behavior.
+
+
+    function addLogging(component) {
+        component.log = () => console.log('Logging...');
+        return component;
+    }
+
+    class User {
+        constructor(name) {
+            this.name = name;
+        }
+
+        sayHello() {
+            console.log(`Hello, ${this.name}`);
+        }
+    }
+
+    const user = new User('John');
+    const decoratedUser = addLogging(user);
+
+    decoratedUser.sayHello(); // Hello, John
+    decoratedUser.log(); 
