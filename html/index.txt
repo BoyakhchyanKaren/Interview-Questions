@@ -57,4 +57,3 @@ typically rendered as italic by default. It denotes emphasis rather than strong 
     The <b> tag is not recommended for use when semantic emphasis or importance is intended, as it does not provide the same level of semantic clarity as the <strong> tag.
     Search engines and screen readers may not interpret text within <b> tags as having any particular importance.    
  
-    

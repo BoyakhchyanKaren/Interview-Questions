@@ -378,3 +378,12 @@ So there are 4 basic situations when we need to use useCallback
             listeners and state to make the page interactive. Essentially, 
             React takes control of the existing HTML and turns it into a fully interactive 
             React application without re-rendering the entire page.
+
+
+40. How to optimize images in react/next.
+
+    1. use lazy loading
+    2. use NextImage from next.
+    3. use srcset attribute to render images based on resolution.
+
+    
